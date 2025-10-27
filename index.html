@@ -15,13 +15,6 @@
       margin: 0;
     }
 
-    .w3-bar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 10;
-    }
-
     .content {
       display: flex;
       flex-direction: column;
@@ -40,6 +33,11 @@
       font-weight: normal;
       color: #444;
     }
+
+    /* Ensure dropdown appears above content */
+    .w3-dropdown-content {
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
@@ -49,12 +47,11 @@
   <div class="w3-bar w3-black w3-card">
     <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
 
-    <!-- Dropdown -->
-    <div class="w3-dropdown-hover w3-hide-small">
+    <!-- Working Dropdown -->
+    <div class="w3-dropdown-hover">
       <button class="w3-padding-large w3-button" title="Assignments">
         Assignments <i class="fa fa-caret-down"></i>
       </button>
-
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
         <a href="assignment1_conversion.html" class="w3-bar-item w3-button">Assignment #1 - Conversion</a>
         <a href="assignment2_tax.html" class="w3-bar-item w3-button">Assignment #2 - Income Tax Calculator</a>
@@ -70,18 +67,6 @@
   <h1>CS 1130 - Introduction to Computing</h1>
   <h3>Created by Albert Mel B. Abejaron</h3>
 </div>
-
-<script>
-// Used to toggle the menu on small screens (optional)
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
 
 </body>
 </html>
