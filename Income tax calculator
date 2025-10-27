@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Assignment 2 — Income Tax Calculator</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:20px;max-width:720px}
+    label,input,button{display:block;margin:6px 0}
+  </style>
+</head>
+<body>
+  <h1>Income Tax Calculator</h1>
+  <p>Enter annual gross income. This example uses a simple progressive tax table — modify to match your rubric.</p>
+
+  <label>Annual Gross Income (₱): <input id="income" type="number" step="0.01" /></label>
+  <button onclick="calculateTax()">Calculate Tax</button>
+
+  <div id="output" style="margin-top:12px"></div>
+
+  <script>
+    // Example progressive brackets — replace with the exact rubric if different
+    const brackets = [
+      {limit: 250000, rate: 0},
+      {limit: 400000, rate: 0.20},
+      {limit: 800000, rate: 0.25},
+      {limit: 2000000, rate: 0.30},
+      {limit: 8000000, rate: 0.32},
+      {limit: Infinity, rate: 0.35}
+    ];
+
+    function calculateTax(){
+      const gross = parseFloat(document.getElementById('income').value);
+      if (isNaN(gross) || gross < 0) { show('Enter a valid income'); return; }
+
+      // Simple calculation: apply each bracket progressively
+      let remaining = gross;
+      let prevLimit = 0;
+      let tax = 0;
+      for (const b of brackets){
+        const taxable = Math.max(0, Math.min(remaining, b.limit - prevLimit));
+        tax += taxable * b.rate;
+        remaining -= taxable;
+        prevLimit = b.limit;
+        if (remaining <= 0) break;
+      }
+
+      const net = gross - tax;
+      show(`Gross: ₱${gross.toFixed(2)}\nTax: ₱${tax.toFixed(2)}\nNet Pay: ₱${net.toFixed(2)}`);
+    }
+
+    function show(text){ document.getElementById('output').innerText = text; }
+  </script>
+</body>
+</html>
