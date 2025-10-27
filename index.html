@@ -8,115 +8,59 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    body {font-family: "Lato", sans-serif;}
-    .mySlides {display: none;}
-    .topnav {
-      background-color: #000;
-      overflow: hidden;
+    body {
+      font-family: "Lato", sans-serif;
+      background-color: white;
       text-align: center;
+      margin: 0;
     }
-    .topnav a, .dropbtn {
-      color: white;
-      text-decoration: none;
-      display: inline-block;
-      padding: 14px 20px;
+
+    .w3-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
     }
-    .topnav a:hover, .dropdown:hover .dropbtn {
-      background-color: #333;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: black;
     }
-    .dropdown {
-      display: inline-block;
-      position: relative;
+
+    h1 {
+      font-size: 40px;
+      letter-spacing: 2px;
     }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #111;
-      min-width: 200px;
-      z-index: 1;
-    }
-    .dropdown-content a {
-      display: block;
-      text-align: left;
-      padding: 10px;
-    }
-    .dropdown-content a:hover {
-      background-color: #333;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
+
+    h3 {
+      font-weight: normal;
+      color: #444;
     }
   </style>
 </head>
 <body>
 
-<!-- TOP NAVIGATION BAR -->
-<div class="topnav">
-  <a href="#">HOME</a>
-  <div class="dropdown">
-    <button class="dropbtn">Javascript Adding 2 Numbers Examples ▼</button>
-    <div class="dropdown-content">
-      <a href="#">Example 1</a>
-      <a href="#">Example 2</a>
-      <a href="#">Example 3</a>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Javascript Grade Computation Examples ▼</button>
-    <div class="dropdown-content">
-      <a href="#">Example 1</a>
-      <a href="#">Example 2</a>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Javascript EventListeners ▼</button>
-    <div class="dropdown-content">
-      <a href="#">Example 1</a>
-      <a href="#">Example 2</a>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Natural Numbers and Loops ▼</button>
-    <div class="dropdown-content">
-      <a href="#">Example 1</a>
-      <a href="#">Example 2</a>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Shopping Carts ▼</button>
-    <div class="dropdown-content">
-      <a href="#">Example 1</a>
-      <a href="#">Example 2</a>
-    </div>
-  </div>
-  <div class="dropdown">
-    <button class="dropbtn">Other Javascript Examples ▼</button>
-    <div class="dropdown-content">
-      <a href="#">Example 1</a>
-      <a href="#">Example 2</a>
+<!-- Navbar -->
+<div class="w3-bar w3-black w3-card">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-padding-large w3-button" title="Assignments">Assignments <i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+      <a href="assignment1_conversion.html" class="w3-bar-item w3-button">Assignment #1 - Conversion</a>
+      <a href="assignment2_tax.html" class="w3-bar-item w3-button">Assignment #2 - Income Tax Calculator</a>
+      <a href="assignment3_loops.html" class="w3-bar-item w3-button">Assignment #3 - Loops (Factorial, Sum, Average)</a>
+      <a href="assignment4_payroll.html" class="w3-bar-item w3-button">Assignment #4 - Simple Payroll</a>
     </div>
   </div>
 </div>
 
-<!-- ORIGINAL NAVBAR BELOW -->
-<div class="w3-top" style="top:48px;">
-  <div class="w3-bar w3-black w3-card">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-    <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-padding-large w3-button" title="Assignments">Assignments <i class="fa fa-caret-down"></i></button>
-      <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a href="assignment1_conversion.html" class="w3-bar-item w3-button">Assignment #1 - Conversion</a>
-        <a href="assignment2_tax.html" class="w3-bar-item w3-button">Assignment #2 - Income Tax Calculator</a>
-        <a href="assignment3_loops.html" class="w3-bar-item w3-button">Assignment #3 - Loops (Factorial, Sum, Average)</a>
-        <a href="assignment4_payroll.html" class="w3-bar-item w3-button">Assignment #4 - Simple Payroll</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CONTENT -->
-<div class="w3-content" style="max-width:2000px;margin-top:120px;text-align:center">
-  <h2 class="w3-wide">CS 1130 - Introduction to Computing</h2>
+<!-- Centered Content -->
+<div class="content">
+  <h1>CS 1130 - Introduction to Computing</h1>
   <h3>Created by Albert Mel B. Abejaron</h3>
 </div>
 
