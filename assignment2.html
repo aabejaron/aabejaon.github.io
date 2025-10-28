@@ -18,12 +18,25 @@
 
 <div class="w3-container w3-padding-32">
   <h2>Income Tax Calculator</h2>
-  <p>Enter your income to calculate your estimated tax based on basic tax brackets.</p>
-  
-  <input id="income" class="w3-input w3-border" type="number" placeholder="Enter your income">
+  <p>Enter your annual income below to calculate your estimated tax based on simple tax brackets.</p>
+
+  <input id="income" class="w3-input w3-border" type="number" placeholder="Enter your income in ₱">
   <button onclick="calculateTax()" class="w3-button w3-blue w3-margin-top">Calculate Tax</button>
-  
+
   <p id="taxResult" class="w3-large w3-margin-top"></p>
+
+  <hr>
+
+  <h3>How It Works</h3>
+  <p>This calculator uses a simple tax system for demonstration:</p>
+  <ul>
+    <li>₱0 – ₱250,000 → 0% tax</li>
+    <li>₱250,001 – ₱400,000 → 15% of the excess over ₱250,000</li>
+    <li>₱400,001 – ₱800,000 → ₱22,500 + 20% of the excess over ₱400,000</li>
+    <li>₱800,001 and above → ₱102,500 + 25% of the excess over ₱800,000</li>
+  </ul>
+
+  <p>This is a simplified version of the actual income tax computation.</p>
 </div>
 
 <script>
@@ -31,26 +44,13 @@ function calculateTax() {
   let income = parseFloat(document.getElementById('income').value);
   let tax = 0;
 
-  if (isNaN(income) || income < 0) {
-    document.getElementById('taxResult').innerText = "Please enter a valid income.";
-    return;
-  }
+  if (income <= 250000) tax = 0;
+  else if (income <= 400000) tax = (income - 250000) * 0.15;
+  else if (income <= 800000) tax = 22500 + (income - 400000) * 0.20;
+  else tax = 102500 + (income - 800000) * 0.25;
 
-  if (income <= 250000) {
-    tax = 0;
-  } else if (income <= 400000) {
-    tax = (income - 250000) * 0.20;
-  } else if (income <= 800000) {
-    tax = 30000 + (income - 400000) * 0.25;
-  } else if (income <= 2000000) {
-    tax = 130000 + (income - 800000) * 0.30;
-  } else if (income <= 8000000) {
-    tax = 490000 + (income - 2000000) * 0.32;
-  } else {
-    tax = 2410000 + (income - 8000000) * 0.35;
-  }
-
-  document.getElementById('taxResult').innerText = "Estimated Tax: ₱" + tax.toFixed(2);
+  document.getElementById('taxResult').innerText = 
+    "Your estimated tax is: ₱" + tax.toFixed(2);
 }
 </script>
 
