@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Assignment #4 - Simple Payroll</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+<div class="w3-bar w3-blue">
+  <a href="index.html" class="w3-bar-item w3-button">Home</a>
+  <span class="w3-bar-item">Assignment #4 - Simple Payroll</span>
+</div>
+
+<div class="w3-container w3-padding-32">
+  <h2>Simple Payroll System</h2>
+  <input id="name" class="w3-input w3-border" placeholder="Employee Name">
+  <input id="hours" class="w3-input w3-border w3-margin-top" type="number" placeholder="Hours Worked">
+  <input id="rate" class="w3-input w3-border w3-margin-top" type="number" placeholder="Hourly Rate">
+  <button class="w3-button w3-blue w3-margin-top" onclick="computePayroll()">Compute</button>
+  <p id="payrollResult" class="w3-large w3-margin-top"></p>
+</div>
+
+<script>
+function computePayroll() {
+  let name = document.getElementById("name").value;
+  let hours = parseFloat(document.getElementById("hours").value);
+  let rate = parseFloat(document.getElementById("rate").value);
+  let gross = hours * rate;
+  let tax = gross * 0.10;
+  let net = gross - tax;
+  document.getElementById("payrollResult").innerHTML =
+    `<b>${name}</b><br>Gross Pay: ₱${gross.toFixed(2)}<br>Tax: ₱${tax.toFixed(2)}<br>Net Pay: ₱${net.toFixed(2)}`;
+}
+</script>
+
+</body>
+</html>
