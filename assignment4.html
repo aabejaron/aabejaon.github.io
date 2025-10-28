@@ -5,32 +5,51 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   <style>
-    body {font-family: "Poppins", sans-serif;}
-    .header {
-      background: linear-gradient(90deg, #003366, #0059b3);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-    }
+    body {font-family: Poppins, sans-serif; background-color: #f5f5f5;}
   </style>
 </head>
 <body>
 
-<div class="w3-bar w3-card w3-dark-grey">
-  <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+<div class="w3-bar w3-blue">
+  <a href="index.html" class="w3-bar-item w3-button">Home</a>
+  <span class="w3-bar-item">Assignment #4 - Simple Payroll</span>
 </div>
-
-<header class="header">
-  <h2>Assignment #4 - Simple Payroll Program</h2>
-  <p>Compute gross pay, deductions, and net pay</p>
-</header>
 
 <div class="w3-container w3-padding-32">
-  <h3>Payroll Program</h3>
-  <p>Insert your HTML/JavaScript payroll calculator here.</p>
+  <h2>Simple Payroll Calculator</h2>
+  <p>Enter employee details to calculate net pay.</p>
+
+  <input id="name" class="w3-input w3-border" type="text" placeholder="Employee Name">
+  <input id="hours" class="w3-input w3-border w3-margin-top" type="number" placeholder="Hours Worked">
+  <input id="rate" class="w3-input w3-border w3-margin-top" type="number" placeholder="Hourly Rate">
+  <button onclick="calculatePay()" class="w3-button w3-blue w3-margin-top">Calculate Pay</button>
+
+  <p id="payResult" class="w3-large w3-margin-top"></p>
 </div>
+
+<script>
+function calculatePay() {
+  let name = document.getElementById('name').value;
+  let hours = parseFloat(document.getElementById('hours').value);
+  let rate = parseFloat(document.getElementById('rate').value);
+
+  if (name === "" || isNaN(hours) || isNaN(rate) || hours < 0 || rate < 0) {
+    document.getElementById('payResult').innerText = "Please enter valid inputs.";
+    return;
+  }
+
+  let gross = hours * rate;
+  let tax = gross * 0.12;
+  let net = gross - tax;
+
+  document.getElementById('payResult').innerHTML =
+    "Employee: " + name + "<br>" +
+    "Gross Pay: ₱" + gross.toFixed(2) + "<br>" +
+    "Tax (12%): ₱" + tax.toFixed(2) + "<br>" +
+    "Net Pay: ₱" + net.toFixed(2);
+}
+</script>
 
 </body>
 </html>
