@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Assignment #3 - Loops</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+<div class="w3-bar w3-blue">
+  <a href="index.html" class="w3-bar-item w3-button">Home</a>
+  <span class="w3-bar-item">Assignment #3 - Loops</span>
+</div>
+
+<div class="w3-container w3-padding-32">
+  <h2>Factorial (While Loop)</h2>
+  <input id="factInput" type="number" class="w3-input w3-border" placeholder="Enter a number">
+  <button class="w3-button w3-blue w3-margin-top" onclick="calculateFactorial()">Compute</button>
+  <p id="factResult" class="w3-large"></p>
+
+  <hr>
+
+  <h2>Sum (Do While Loop)</h2>
+  <input id="sumInput" type="number" class="w3-input w3-border" placeholder="Enter N">
+  <button class="w3-button w3-blue w3-margin-top" onclick="calculateSum()">Compute</button>
+  <p id="sumResult" class="w3-large"></p>
+
+  <hr>
+
+  <h2>Average (For Loop)</h2>
+  <input id="avgInput" type="number" class="w3-input w3-border" placeholder="Enter N">
+  <button class="w3-button w3-blue w3-margin-top" onclick="calculateAverage()">Compute</button>
+  <p id="avgResult" class="w3-large"></p>
+</div>
+
+<script>
+function calculateFactorial() {
+  let n = parseInt(document.getElementById("factInput").value);
+  let result = 1, i = 1;
+  while (i <= n) { result *= i; i++; }
+  document.getElementById("factResult").innerText = "Factorial: " + result;
+}
+
+function calculateSum() {
+  let n = parseInt(document.getElementById("sumInput").value);
+  let sum = 0, i = 1;
+  do { sum += i; i++; } while (i <= n);
+  document.getElementById("sumResult").innerText = "Sum: " + sum;
+}
+
+function calculateAverage() {
+  let n = parseInt(document.getElementById("avgInput").value);
+  let sum = 0;
+  for (let i = 1; i <= n; i++) sum += i;
+  let avg = sum / n;
+  document.getElementById("avgResult").innerText = "Average: " + avg.toFixed(2);
+}
+</script>
+
+</body>
+</html>
