@@ -5,35 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    body {font-family: "Poppins", sans-serif;}
+    .header {
+      background: linear-gradient(90deg, #003366, #0059b3);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .w3-card {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="w3-bar w3-blue">
-  <a href="index.html" class="w3-bar-item w3-button">Home</a>
-  <span class="w3-bar-item">Assignment #4 - Simple Payroll</span>
+<div class="w3-bar w3-card w3-dark-grey">
+  <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
 </div>
 
-<div class="w3-container w3-padding-32">
-  <h2>Simple Payroll System</h2>
-  <input id="name" class="w3-input w3-border" placeholder="Employee Name">
-  <input id="hours" class="w3-input w3-border w3-margin-top" type="number" placeholder="Hours Worked">
-  <input id="rate" class="w3-input w3-border w3-margin-top" type="number" placeholder="Hourly Rate">
-  <button class="w3-button w3-blue w3-margin-top" onclick="computePayroll()">Compute</button>
-  <p id="payrollResult" class="w3-large w3-margin-top"></p>
-</div>
+<header class="header">
+  <h2>Assignment #4 - Simple Payroll Program</h2>
+  <p>Compute an employee's gross pay, deductions, and net pay.</p>
+</header>
 
-<script>
-function computePayroll() {
-  let name = document.getElementById("name").value;
-  let hours = parseFloat(document.getElementById("hours").value);
-  let rate = parseFloat(document.getElementById("rate").value);
-  let gross = hours * rate;
-  let tax = gross * 0.10;
-  let net = gross - tax;
-  document.getElementById("payrollResult").innerHTML =
-    `<b>${name}</b><br>Gross Pay: ₱${gross.toFixed(2)}<br>Tax: ₱${tax.toFixed(2)}<br>Net Pay: ₱${net.toFixed(2)}`;
-}
-</script>
+<div class="w3-card w3-white w3-center">
+  <h3>Program Overview</h3>
+  <p>This program allows the user to input employee details and calculates payroll components like basic pay, deductions, and net salary.</p>
+  
+  <hr>
+
+  <h4>Try It:</h4>
+  <p>Insert your HTML and JavaScript code for the Payroll Program here.</p>
+</div>
 
 </body>
 </html>
