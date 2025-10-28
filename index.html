@@ -5,68 +5,76 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   <style>
-    body {
-      font-family: "Lato", sans-serif;
-      background-color: white;
-      text-align: center;
-      margin: 0;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: black;
-    }
-
-    h1 {
-      font-size: 40px;
-      letter-spacing: 2px;
-    }
-
-    h3 {
-      font-weight: normal;
-      color: #444;
-    }
-
-    /* Ensure dropdown appears above content */
-    .w3-dropdown-content {
-      z-index: 9999;
-    }
+    body {font-family: "Poppins", sans-serif; background-color: #f5f5f5;}
+    .w3-bar {background-color: #003366;}
+    .w3-bar-item {color: white !important;}
+    .hero {padding: 64px 16px; background: linear-gradient(135deg, #003366, #0059b3); color: white;}
+    .assignment-card {transition: 0.3s;}
+    .assignment-card:hover {transform: scale(1.03);}
   </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-black w3-card">
-    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+<div class="w3-bar w3-card">
+  <a href="index.html" class="w3-bar-item w3-button w3-large w3-hover-blue">CS 1130</a>
+  <a href="assignment1.html" class="w3-bar-item w3-button w3-hover-blue">Assignment #1</a>
+  <a href="assignment2.html" class="w3-bar-item w3-button w3-hover-blue">Assignment #2</a>
+  <a href="assignment3.html" class="w3-bar-item w3-button w3-hover-blue">Assignment #3</a>
+  <a href="assignment4.html" class="w3-bar-item w3-button w3-hover-blue">Assignment #4</a>
+</div>
 
-    <!-- Working Dropdown -->
-    <div class="w3-dropdown-hover">
-      <button class="w3-padding-large w3-button" title="Assignments">
-        Assignments <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a href="assignment1_conversion.html" class="w3-bar-item w3-button">Assignment #1 - Conversion</a>
-        <a href="assignment2_tax.html" class="w3-bar-item w3-button">Assignment #2 - Income Tax Calculator</a>
-        <a href="assignment3_loops.html" class="w3-bar-item w3-button">Assignment #3 - Loops (Factorial, Sum, Average)</a>
-        <a href="assignment4_payroll.html" class="w3-bar-item w3-button">Assignment #4 - Simple Payroll</a>
+<!-- Hero Section -->
+<header class="hero w3-center">
+  <h1 class="w3-xxxlarge">CS 1130 - Introduction to Computing</h1>
+  <p class="w3-xlarge">by John Roy A. Geralde | Computer Studies Division</p>
+</header>
+
+<!-- Assignments Section -->
+<div class="w3-content w3-padding-32">
+  <h2 class="w3-center">Assignments</h2>
+  <div class="w3-row-padding w3-margin-top">
+
+    <div class="w3-quarter w3-margin-bottom">
+      <div class="w3-card w3-white assignment-card w3-padding">
+        <h4>Assignment #1</h4>
+        <p>Conversion (Celsius ↔ Fahrenheit, Meters ↔ Feet)</p>
+        <a href="assignment1.html" class="w3-button w3-blue w3-round">Open</a>
       </div>
     </div>
+
+    <div class="w3-quarter w3-margin-bottom">
+      <div class="w3-card w3-white assignment-card w3-padding">
+        <h4>Assignment #2</h4>
+        <p>Income Tax Calculator</p>
+        <a href="assignment2.html" class="w3-button w3-blue w3-round">Open</a>
+      </div>
+    </div>
+
+    <div class="w3-quarter w3-margin-bottom">
+      <div class="w3-card w3-white assignment-card w3-padding">
+        <h4>Assignment #3</h4>
+        <p>Loops (Factorial, Sum, Average)</p>
+        <a href="assignment3.html" class="w3-button w3-blue w3-round">Open</a>
+      </div>
+    </div>
+
+    <div class="w3-quarter w3-margin-bottom">
+      <div class="w3-card w3-white assignment-card w3-padding">
+        <h4>Assignment #4</h4>
+        <p>Simple Payroll Program</p>
+        <a href="assignment4.html" class="w3-button w3-blue w3-round">Open</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
-<!-- Centered Content -->
-<div class="content">
-  <h1>CS 1130 - Introduction to Computing</h1>
-  <h3>Created by Albert Mel B. Abejaron</h3>
-</div>
+<footer class="w3-center w3-padding-16 w3-small" style="background:#003366; color:white;">
+  &copy; 2025 CS 1130 | Designed by Albert Mel B. Abejaron
+</footer>
 
 </body>
 </html>
