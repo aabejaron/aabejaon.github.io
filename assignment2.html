@@ -5,32 +5,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
   <style>
-    body {font-family: "Poppins", sans-serif;}
-    .header {
-      background: linear-gradient(90deg, #003366, #0059b3);
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-    }
+    body {font-family: Poppins, sans-serif; background-color: #f5f5f5;}
   </style>
 </head>
 <body>
 
-<div class="w3-bar w3-card w3-dark-grey">
-  <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+<div class="w3-bar w3-blue">
+  <a href="index.html" class="w3-bar-item w3-button">Home</a>
+  <span class="w3-bar-item">Assignment #2 - Income Tax Calculator</span>
 </div>
-
-<header class="header">
-  <h2>Assignment #2 - Income Tax Calculator</h2>
-  <p>Calculate tax based on user income</p>
-</header>
 
 <div class="w3-container w3-padding-32">
-  <h3>Income Tax Calculator Program</h3>
-  <p>Insert your HTML/JavaScript income tax calculator here.</p>
+  <h2>Income Tax Calculator</h2>
+  <p>Enter your income to calculate your estimated tax based on basic tax brackets.</p>
+  
+  <input id="income" class="w3-input w3-border" type="number" placeholder="Enter your income">
+  <button onclick="calculateTax()" class="w3-button w3-blue w3-margin-top">Calculate Tax</button>
+  
+  <p id="taxResult" class="w3-large w3-margin-top"></p>
 </div>
+
+<script>
+function calculateTax() {
+  let income = parseFloat(document.getElementById('income').value);
+  let tax = 0;
+
+  if (isNaN(income) || income < 0) {
+    document.getElementById('taxResult').innerText = "Please enter a valid income.";
+    return;
+  }
+
+  if (income <= 250000) {
+    tax = 0;
+  } else if (income <= 400000) {
+    tax = (income - 250000) * 0.20;
+  } else if (income <= 800000) {
+    tax = 30000 + (income - 400000) * 0.25;
+  } else if (income <= 2000000) {
+    tax = 130000 + (income - 800000) * 0.30;
+  } else if (income <= 8000000) {
+    tax = 490000 + (income - 2000000) * 0.32;
+  } else {
+    tax = 2410000 + (income - 8000000) * 0.35;
+  }
+
+  document.getElementById('taxResult').innerText = "Estimated Tax: ₱" + tax.toFixed(2);
+}
+</script>
 
 </body>
 </html>
