@@ -5,34 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <style>
+    body {font-family: "Poppins", sans-serif;}
+    .header {
+      background: linear-gradient(90deg, #003366, #0059b3);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .w3-card {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="w3-bar w3-blue">
-  <a href="index.html" class="w3-bar-item w3-button">Home</a>
-  <span class="w3-bar-item">Assignment #2 - Income Tax Calculator</span>
+<div class="w3-bar w3-card w3-dark-grey">
+  <a href="index.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
 </div>
 
-<div class="w3-container w3-padding-32">
-  <h2>Income Tax Calculator</h2>
-  <input id="income" class="w3-input w3-border" type="number" placeholder="Enter your income">
-  <button onclick="calculateTax()" class="w3-button w3-blue w3-margin-top">Calculate</button>
-  <p id="result" class="w3-large w3-margin-top"></p>
-</div>
+<header class="header">
+  <h2>Assignment #2 - Income Tax Calculator</h2>
+  <p>Compute the income tax based on a given salary.</p>
+</header>
 
-<script>
-function calculateTax() {
-  let income = parseFloat(document.getElementById('income').value);
-  let tax = 0;
-  if (income <= 250000) tax = 0;
-  else if (income <= 400000) tax = (income - 250000) * 0.20;
-  else if (income <= 800000) tax = 30000 + (income - 400000) * 0.25;
-  else if (income <= 2000000) tax = 130000 + (income - 800000) * 0.30;
-  else if (income <= 8000000) tax = 490000 + (income - 2000000) * 0.32;
-  else tax = 2410000 + (income - 8000000) * 0.35;
-  document.getElementById('result').innerText = "Your tax is ₱" + tax.toFixed(2);
-}
-</script>
+<div class="w3-card w3-white w3-center">
+  <h3>Program Overview</h3>
+  <p>This program calculates the income tax of a user based on their salary using conditional statements.</p>
+  
+  <hr>
+
+  <h4>Try It:</h4>
+  <p>Insert your HTML and JavaScript code for the Income Tax Calculator here.</p>
+</div>
 
 </body>
 </html>
