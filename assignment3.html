@@ -1,75 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Assignment #3 - Loops</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Factorial, Sum, and Average Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    .section {
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-    h2 {
-      margin-top: 0;
-    }
-    input, button {
-      padding: 8px;
-      margin: 5px 0;
-    }
+    body {font-family: Poppins, sans-serif; background-color: #f5f5f5;}
+    .section {margin-bottom: 30px;}
   </style>
 </head>
 <body>
 
-  <div class="section">
-    <h2>Factorial Calculator</h2>
-    <input type="number" id="factorialInput" placeholder="Enter a number">
-    <button onclick="calculateFactorial()">Calculate Factorial</button>
-    <p>Result: <span id="factorialResult"></span></p>
+<div class="w3-bar w3-blue">
+  <a href="index.html" class="w3-bar-item w3-button">Home</a>
+  <span class="w3-bar-item">Assignment #3 - Loops</span>
+</div>
+
+<div class="w3-container w3-padding-32">
+  <h2>Loops (Factorial, Sum, and Average)</h2>
+  <p>Enter a number to calculate its factorial, sum, or average using loops.</p>
+
+  <!-- Factorial Section -->
+  <div class="section w3-card w3-padding w3-light-grey">
+    <h3>Factorial Calculator</h3>
+    <input id="factorialInput" class="w3-input w3-border" type="number" placeholder="Enter a positive number">
+    <button onclick="calculateFactorial()" class="w3-button w3-blue w3-margin-top">Calculate Factorial</button>
+    <p id="factorialResult" class="w3-large w3-margin-top"></p>
   </div>
 
-  <div class="section">
-    <h2>Sum Calculator</h2>
-    <input type="text" id="sumInput" placeholder="Enter numbers separated by commas">
-    <button onclick="calculateSum()">Calculate Sum</button>
-    <p>Result: <span id="sumResult"></span></p>
+  <!-- Sum Section -->
+  <div class="section w3-card w3-padding w3-light-grey">
+    <h3>Sum Calculator</h3>
+    <input id="sumInput" class="w3-input w3-border" type="number" placeholder="Enter a positive number">
+    <button onclick="calculateSum()" class="w3-button w3-blue w3-margin-top">Calculate Sum</button>
+    <p id="sumResult" class="w3-large w3-margin-top"></p>
   </div>
 
-  <div class="section">
-    <h2>Average Calculator</h2>
-    <input type="text" id="averageInput" placeholder="Enter numbers separated by commas">
-    <button onclick="calculateAverage()">Calculate Average</button>
-    <p>Result: <span id="averageResult"></span></p>
+  <!-- Average Section -->
+  <div class="section w3-card w3-padding w3-light-grey">
+    <h3>Average Calculator</h3>
+    <input id="averageInput" class="w3-input w3-border" type="number" placeholder="Enter a positive number">
+    <button onclick="calculateAverage()" class="w3-button w3-blue w3-margin-top">Calculate Average</button>
+    <p id="averageResult" class="w3-large w3-margin-top"></p>
   </div>
 
-  <script>
-    function calculateFactorial() {
-      let n = parseInt(document.getElementById('factorialInput').value);
-      let result = 1;
-      for (let i = 1; i <= n; i++) {
-        result *= i;
-      }
-      document.getElementById('factorialResult').textContent = result;
-    }
+</div>
 
-    function calculateSum() {
-      let nums = document.getElementById('sumInput').value.split(',').map(Number);
-      let sum = nums.reduce((a, b) => a + b, 0);
-      document.getElementById('sumResult').textContent = sum;
+<script>
+  function calculateFactorial() {
+    let n = parseInt(document.getElementById('factorialInput').value);
+    if (isNaN(n) || n <= 0) {
+      document.getElementById('factorialResult').innerText = "Please enter a positive number.";
+      return;
     }
+    let factorial = 1, i = 1;
+    while (i <= n) {
+      factorial *= i;
+      i++;
+    }
+    document.getElementById('factorialResult').innerText = "Factorial: " + factorial;
+  }
 
-    function calculateAverage() {
-      let nums = document.getElementById('averageInput').value.split(',').map(Number);
-      let avg = nums.reduce((a, b) => a + b, 0) / nums.length;
-      document.getElementById('averageResult').textContent = avg;
+  function calculateSum() {
+    let n = parseInt(document.getElementById('sumInput').value);
+    if (isNaN(n) || n <= 0) {
+      document.getElementById('sumResult').innerText = "Please enter a positive number.";
+      return;
     }
-  </script>
+    let sum = 0, j = 1;
+    do {
+      sum += j;
+      j++;
+    } while (j <= n);
+    document.getElementById('sumResult').innerText = "Sum: " + sum;
+  }
+
+  function calculateAverage() {
+    let n = parseInt(document.getElementById('averageInput').value);
+    if (isNaN(n) || n <= 0) {
+      document.getElementById('averageResult').innerText = "Please enter a positive number.";
+      return;
+    }
+    let total = 0;
+    for (let k = 1; k <= n; k++) {
+      total += k;
+    }
+    let avg = total / n;
+    document.getElementById('averageResult').innerText = "Average: " + avg.toFixed(2);
+  }
+</script>
 
 </body>
 </html>
