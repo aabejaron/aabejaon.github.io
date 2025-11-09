@@ -1,53 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Assignment #4 - Simple Payroll</title>
+  <title>Simple Payroll List</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
     body {font-family: Poppins, sans-serif; background-color: #f5f5f5;}
+    table {width: 100%; border-collapse: collapse; margin-top: 20px;}
+    th, td {border: 1px solid #ccc; text-align: center; padding: 8px;}
+    th {background-color: #2196F3; color: white;}
   </style>
 </head>
 <body>
 
 <div class="w3-bar w3-blue">
   <a href="index.html" class="w3-bar-item w3-button">Home</a>
-  <span class="w3-bar-item">Assignment #4 - Simple Payroll</span>
+  <span class="w3-bar-item">Assignment #5 - Payroll List</span>
 </div>
 
 <div class="w3-container w3-padding-32">
-  <h2>Simple Payroll Calculator</h2>
-  <p>Enter employee details to calculate net pay.</p>
+  <h2>Payroll Management System</h2>
+  <p>Input employee details and manage the payroll list below.</p>
 
-  <input id="name" class="w3-input w3-border" type="text" placeholder="Employee Name">
-  <input id="hours" class="w3-input w3-border w3-margin-top" type="number" placeholder="Hours Worked">
-  <input id="rate" class="w3-input w3-border w3-margin-top" type="number" placeholder="Hourly Rate">
-  <button onclick="calculatePay()" class="w3-button w3-blue w3-margin-top">Calculate Pay</button>
+  <input id="empName" class="w3-input w3-border" type="text" placeholder="Employee Name">
+  <input id="daysWorked" class="w3-input w3-border w3-margin-top" type="number" placeholder="Days Worked">
+  <input id="dailyRate" class="w3-input w3-border w3-margin-top" type="number" placeholder="Daily Rate">
+  <input id="deduction" class="w3-input w3-border w3-margin-top" type="number" placeholder="Deduction Amount">
 
-  <p id="payResult" class="w3-large w3-margin-top"></p>
+  <button onclick="addEmployee()" class="w3-button w3-green w3-margin-top">Add Employee</button>
+  <button onclick="deleteEmployee()" class="w3-button w3-red w3-margin-top">Delete Employee</button>
+
+  <input id="deleteLine" class="w3-input w3-border w3-margin-top" type="number" placeholder="Enter Line No. to Delete">
+
+  <table id="payrollTable">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Employee Name</th>
+        <th>Days Worked</th>
+        <th>Daily Rate</th>
+        <th>Gross Pay</th>
+        <th>Deduction</th>
+        <th>Net Pay</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+      <!-- Rows will appear here -->
+    </tbody>
+  </table>
 </div>
 
 <script>
-function calculatePay() {
-  let name = document.getElementById('name').value;
-  let hours = parseFloat(document.getElementById('hours').value);
-  let rate = parseFloat(document.getElementById('rate').value);
+let payroll = [];
 
-  if (name === "" || isNaN(hours) || isNaN(rate) || hours < 0 || rate < 0) {
-    document.getElementById('payResult').innerText = "Please enter valid inputs.";
+function displayTable() {
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = "";
+
+  payroll.forEach((emp, index) => {
+    let row = `<tr>
+      <td>${index + 1}</td>
+      <td>${emp.name}</td>
+      <td>${emp.days}</td>
+      <td>₱${emp.rate.toFixed(2)}</td>
+      <td>₱${emp.gross.toFixed(2)}</td>
+      <td>₱${emp.deduct.toFixed(2)}</td>
+      <td>₱${emp.net.toFixed(2)}</td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
+}
+
+function addEmployee() {
+  let name = document.getElementById('empName').value.trim();
+  let days = parseFloat(document.getElementById('daysWorked').value);
+  let rate = parseFloat(document.getElementById('dailyRate').value);
+  let deduct = parseFloat(document.getElementById('deduction').value);
+
+  if (name === "" || isNaN(days) || isNaN(rate) || isNaN(deduct) || days < 0 || rate < 0 || deduct < 0) {
+    alert("Please enter valid employee details.");
     return;
   }
 
-  let gross = hours * rate;
-  let tax = gross * 0.12;
-  let net = gross - tax;
+  let gross = days * rate;
+  let net = gross - deduct;
 
-  document.getElementById('payResult').innerHTML =
-    "Employee: " + name + "<br>" +
-    "Gross Pay: ₱" + gross.toFixed(2) + "<br>" +
-    "Tax (12%): ₱" + tax.toFixed(2) + "<br>" +
-    "Net Pay: ₱" + net.toFixed(2);
+  payroll.push({ name, days, rate, deduct, gross, net });
+
+  displayTable();
+
+  document.getElementById('empName').value = "";
+  document.getElementById('daysWorked').value = "";
+  document.getElementById('dailyRate').value = "";
+  document.getElementById('deduction').value = "";
+}
+
+function deleteEmployee() {
+  let line = parseInt(document.getElementById('deleteLine').value);
+  if (isNaN(line) || line < 1 || line > payroll.length) {
+    alert("Please enter a valid line number to delete.");
+    return;
+  }
+
+  if (confirm(`Are you sure you want to delete employee #${line}?`)) {
+    payroll.splice(line - 1, 1);
+    displayTable();
+    document.getElementById('deleteLine').value = "";
+  }
 }
 </script>
 
