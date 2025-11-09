@@ -23,14 +23,35 @@
   <input id="numInput" class="w3-input w3-border" type="number" placeholder="Enter a number">
   <button onclick="calculateAll()" class="w3-button w3-blue w3-margin-top">Calculate</button>
 
-  <p id="result" class="w3-large w3-margin-top"></p>
+  <div id="resultsContainer" class="w3-row-padding w3-margin-top" style="display:none;">
+    <div class="w3-third">
+      <div class="w3-card w3-padding w3-white">
+        <h3 class="w3-text-blue">Factorial (While Loop)</h3>
+        <p id="factorialResult" class="w3-large"></p>
+      </div>
+    </div>
+
+    <div class="w3-third">
+      <div class="w3-card w3-padding w3-white">
+        <h3 class="w3-text-blue">Sum (Do-While Loop)</h3>
+        <p id="sumResult" class="w3-large"></p>
+      </div>
+    </div>
+
+    <div class="w3-third">
+      <div class="w3-card w3-padding w3-white">
+        <h3 class="w3-text-blue">Average (For Loop)</h3>
+        <p id="averageResult" class="w3-large"></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
 function calculateAll() {
   let n = parseInt(document.getElementById('numInput').value);
   if (isNaN(n) || n <= 0) {
-    document.getElementById('result').innerText = "Please enter a positive number.";
+    alert("Please enter a positive number.");
     return;
   }
 
@@ -55,10 +76,11 @@ function calculateAll() {
   }
   average = average / n;
 
-  document.getElementById('result').innerHTML = 
-    "Factorial: " + factorial + "<br>" +
-    "Sum: " + sum + "<br>" +
-    "Average: " + average.toFixed(2);
+  // Display results
+  document.getElementById('resultsContainer').style.display = "block";
+  document.getElementById('factorialResult').innerText = factorial;
+  document.getElementById('sumResult').innerText = sum;
+  document.getElementById('averageResult').innerText = average.toFixed(2);
 }
 </script>
 
