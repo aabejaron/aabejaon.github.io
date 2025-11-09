@@ -1,88 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Assignment #3 - Loops</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factorial, Sum, and Average Calculator</title>
   <style>
-    body {font-family: Poppins, sans-serif; background-color: #f5f5f5;}
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .section {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px 0;
+    }
   </style>
 </head>
 <body>
 
-<div class="w3-bar w3-blue">
-  <a href="index.html" class="w3-bar-item w3-button">Home</a>
-  <span class="w3-bar-item">Assignment #3 - Loops</span>
-</div>
-
-<div class="w3-container w3-padding-32">
-  <h2>Loops (Factorial, Sum, and Average)</h2>
-  <p>Enter a number to calculate its factorial, sum, and average using loops.</p>
-
-  <input id="numInput" class="w3-input w3-border" type="number" placeholder="Enter a number">
-  <button onclick="calculateAll()" class="w3-button w3-blue w3-margin-top">Calculate</button>
-
-  <div id="resultsContainer" class="w3-row-padding w3-margin-top" style="display:none;">
-    <div class="w3-third">
-      <div class="w3-card w3-padding w3-white">
-        <h3 class="w3-text-blue">Factorial (While Loop)</h3>
-        <p id="factorialResult" class="w3-large"></p>
-      </div>
-    </div>
-
-    <div class="w3-third">
-      <div class="w3-card w3-padding w3-white">
-        <h3 class="w3-text-blue">Sum (Do-While Loop)</h3>
-        <p id="sumResult" class="w3-large"></p>
-      </div>
-    </div>
-
-    <div class="w3-third">
-      <div class="w3-card w3-padding w3-white">
-        <h3 class="w3-text-blue">Average (For Loop)</h3>
-        <p id="averageResult" class="w3-large"></p>
-      </div>
-    </div>
+  <div class="section">
+    <h2>Factorial Calculator</h2>
+    <input type="number" id="factorialInput" placeholder="Enter a number">
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+    <p>Result: <span id="factorialResult"></span></p>
   </div>
-</div>
 
-<script>
-function calculateAll() {
-  let n = parseInt(document.getElementById('numInput').value);
-  if (isNaN(n) || n <= 0) {
-    alert("Please enter a positive number.");
-    return;
-  }
+  <div class="section">
+    <h2>Sum Calculator</h2>
+    <input type="text" id="sumInput" placeholder="Enter numbers separated by commas">
+    <button onclick="calculateSum()">Calculate Sum</button>
+    <p>Result: <span id="sumResult"></span></p>
+  </div>
 
-  // Factorial (while loop)
-  let factorial = 1, i = 1;
-  while (i <= n) {
-    factorial *= i;
-    i++;
-  }
+  <div class="section">
+    <h2>Average Calculator</h2>
+    <input type="text" id="averageInput" placeholder="Enter numbers separated by commas">
+    <button onclick="calculateAverage()">Calculate Average</button>
+    <p>Result: <span id="averageResult"></span></p>
+  </div>
 
-  // Sum (do while loop)
-  let sum = 0, j = 1;
-  do {
-    sum += j;
-    j++;
-  } while (j <= n);
+  <script>
+    function calculateFactorial() {
+      let n = parseInt(document.getElementById('factorialInput').value);
+      let result = 1;
+      for (let i = 1; i <= n; i++) {
+        result *= i;
+      }
+      document.getElementById('factorialResult').textContent = result;
+    }
 
-  // Average (for loop)
-  let average = 0;
-  for (let k = 1; k <= n; k++) {
-    average += k;
-  }
-  average = average / n;
+    function calculateSum() {
+      let nums = document.getElementById('sumInput').value.split(',').map(Number);
+      let sum = nums.reduce((a, b) => a + b, 0);
+      document.getElementById('sumResult').textContent = sum;
+    }
 
-  // Display results
-  document.getElementById('resultsContainer').style.display = "block";
-  document.getElementById('factorialResult').innerText = factorial;
-  document.getElementById('sumResult').innerText = sum;
-  document.getElementById('averageResult').innerText = average.toFixed(2);
-}
-</script>
+    function calculateAverage() {
+      let nums = document.getElementById('averageInput').value.split(',').map(Number);
+      let avg = nums.reduce((a, b) => a + b, 0) / nums.length;
+      document.getElementById('averageResult').textContent = avg;
+    }
+  </script>
 
 </body>
 </html>
