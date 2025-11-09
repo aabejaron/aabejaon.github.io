@@ -1,99 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Assignment #2 - Income Tax Calculator</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Income Tax Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f7f8fa;
-      padding: 40px;
-      text-align: center;
-    }
-    h1 {
-      color: #333;
-    }
-    .calculator {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      display: inline-block;
-      text-align: left;
-    }
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-      margin: 8px 0;
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    .result {
-      margin-top: 15px;
-      font-weight: bold;
-      font-size: 18px;
-      color: #2b2b2b;
-    }
+    body {font-family: Poppins, sans-serif; background-color: #f5f5f5;}
   </style>
 </head>
 <body>
 
-  <h1>Income Tax Calculator</h1>
-  <div class="calculator">
-    <label for="income">Enter your Taxable Income (₱):</label>
-    <input type="number" id="income" placeholder="Enter amount" required>
+<div class="w3-bar w3-blue">
+  <a href="index.html" class="w3-bar-item w3-button">Home</a>
+  <span class="w3-bar-item">Assignment #2 - Income Tax Calculator</span>
+</div>
 
-    <button onclick="computeTax()">Compute Income Tax</button>
+<div class="w3-container w3-padding-32">
+  <h2>Income Tax Calculator</h2>
+  <p>Enter your annual taxable income below to calculate your income tax based on the current tax brackets.</p>
 
-    <div class="result" id="output"></div>
-  </div>
+  <input id="income" class="w3-input w3-border" type="number" placeholder="Enter your income in ₱">
+  <button onclick="calculateTax()" class="w3-button w3-blue w3-margin-top">Calculate Tax</button>
 
-  <script>
-    function computeTax() {
-      let income = parseFloat(document.getElementById("income").value);
-      let tax = 0;
+  <p id="taxResult" class="w3-large w3-margin-top w3-text-indigo"></p>
 
-      if (isNaN(income) || income < 0) {
-        document.getElementById("output").innerHTML = "Please enter a valid income amount.";
-        return;
-      }
+  <hr>
 
-      if (income <= 250000) {
-        tax = 0;
-      } 
-      else if (income <= 400000) {
-        tax = (income - 250000) * 0.20;
-      } 
-      else if (income <= 800000) {
-        tax = 30000 + (income - 400000) * 0.25;
-      } 
-      else if (income <= 2000000) {
-        tax = 130000 + (income - 800000) * 0.30;
-      } 
-      else if (income <= 8000000) {
-        tax = 490000 + (income - 2000000) * 0.32;
-      } 
-      else {
-        tax = 2410000 + (income - 8000000) * 0.35;
-      }
+  <h3>Tax Brackets</h3>
+  <p>The computation follows the latest income tax schedule:</p>
+  <ul>
+    <li>₱0 – ₱250,000 → 0% tax</li>
+    <li>₱250,001 – ₱400,000 → 20% of the excess over ₱250,000</li>
+    <li>₱400,001 – ₱800,000 → ₱30,000 + 25% of the excess over ₱400,000</li>
+    <li>₱800,001 – ₱2,000,000 → ₱130,000 + 30% of the excess over ₱800,000</li>
+    <li>₱2,000,001 – ₱8,000,000 → ₱490,000 + 32% of the excess over ₱2,000,000</li>
+    <li>₱8,000,001 and above → ₱2,410,000 + 35% of the excess over ₱8,000,000</li>
+  </ul>
 
-      document.getElementById("output").innerHTML = 
-        `Taxable Income: ₱${income.toLocaleString()}<br>
-         Computed Income Tax: <span style="color:green;">₱${tax.toLocaleString()}</span>`;
-    }
-  </script>
+  <p>This calculator provides an estimated computation for educational purposes.</p>
+</div>
+
+<script>
+function calculateTax() {
+  let income = parseFloat(document.getElementById('income').value);
+  let tax = 0;
+
+  if (isNaN(income) || income < 0) {
+    document.getElementById('taxResult').innerText = "Please enter a valid income amount.";
+    return;
+  }
+
+  if (income <= 250000) {
+    tax = 0;
+  } else if (income <= 400000) {
+    tax = (income - 250000) * 0.20;
+  } else if (income <= 800000) {
+    tax = 30000 + (income - 400000) * 0.25;
+  } else if (income <= 2000000) {
+    tax = 130000 + (income - 800000) * 0.30;
+  } else if (income <= 8000000) {
+    tax = 490000 + (income - 2000000) * 0.32;
+  } else {
+    tax = 2410000 + (income - 8000000) * 0.35;
+  }
+
+  document.getElementById('taxResult').innerHTML =
+    "<strong>Your estimated income tax is:</strong> ₱" + tax.toFixed(2);
+}
+</script>
 
 </body>
 </html>
